@@ -30,17 +30,10 @@
     }
 
     &__button {
-        padding: 10px 15px;
-        border-radius: 10px;
-        border: none;
-        background-color: #363636;
-        color: #ffffff;
-        margin-bottom: 20px;
+
         transition: all 0.3s ease-in-out;
 
-        &:hover {
-            background-color: gray;
-        }
+
     }
 }
 

@@ -24,9 +24,11 @@ export class HomeComponent implements OnInit {
   random: Data | null = null;
 
   onFilterActivities(activities: any) {
+    this.boredService.changeActivityToNull();
+    this.activityOn.set(false);
+
     this.activitiesOn.set(true);
     this.filterActivities = activities;
-    console.log(this.filterActivities);
   }
 
   ngOnInit(): void {
