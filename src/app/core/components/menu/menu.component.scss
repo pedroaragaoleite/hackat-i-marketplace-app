@@ -1,0 +1,46 @@
+.menu {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+
+    &__one {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__two {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__button {
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: none;
+        font-weight: 500;
+        color: rgb(95, 95, 95);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: #7D77FE;
+            color: #ffffff;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 769px) {
+
+    // .menu {
+    //     flex-direction: row;
+    //     justify-content: center;
+
+    //     &__one,
+    //     &__two {
+    //         flex: 1 1 auto;
+    //     }
+    // }
+}

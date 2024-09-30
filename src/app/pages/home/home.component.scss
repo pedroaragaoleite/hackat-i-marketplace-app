@@ -1,0 +1,46 @@
+.main {
+    padding: 20px;
+    perspective: 100%;
+    position: relative;
+
+    &__img {
+        width: 200px;
+        margin: 0 auto;
+        z-index: 10;
+    }
+
+    &__cta {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        width: 70%;
+        border-radius: 20px;
+        background-color: rgb(240, 240, 240);
+        text-align: center;
+        // perspective: 70%;
+        transform: translate(-50%) perspective(10px) rotateX(-.2deg);
+
+        &--padding {
+            padding: 20px;
+        }
+    }
+
+
+    &__title {
+        text-transform: uppercase;
+    }
+
+    &__button {
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: none;
+        background-color: #363636;
+        color: #ffffff;
+        margin-bottom: 20px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: gray;
+        }
+    }
+}
