@@ -15,26 +15,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   animations: [
-    trigger('movingForward', [
-      state('start', style({ transform: 'translateX(0px)' })),
-      state('end', style({ transform: 'translateX(300px)' })),
-      transition('start => end', [
-        animate('.6s')
-      ]),
-      transition('end => start', [
-        animate('.6s')
-      ])
-    ]),
-    trigger('movingBack', [
-      state('start', style({ transform: 'translateX(0)' })),
-      state('end', style({ transform: 'translateX(-300px)' })),
-      transition('start => end', [
-        animate('.6s')
-      ]),
-      transition('end => start', [
-        animate('.6s')
-      ])
-    ]),
     trigger('fade', [
       state('start', style({ opacity: 1 })),
       state('end', style({ opacity: 0 })),
@@ -45,30 +25,33 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class HomeComponent implements OnInit {
-  faArrowRight = faArrowRight;
-  faArrowLeft = faArrowLeft;
-  isMovingFront = signal(true)
-  isMovingBack = signal(true)
-  isFadding = signal(true);
-  isFade = signal(true);
 
-  filterActivities: Data[] = [];
   private boredService = inject(BoredApiService);
 
-  activity = computed(() => this.boredService.activity());
-  activityOn = signal(false);
-  activitiesOn = signal(false);
+  // FontAnswome Icons
+  faArrowRight = faArrowRight;
+  faArrowLeft = faArrowLeft;
+  isFade = signal(true);
 
-  count = signal(0);
+  // filterActivities: Data[] = [];
+  filterActivities = signal<Data[] | null>(null);
+  random = signal<Data | null>(null);
 
-  random: Data | null = null;
+  // isActivitiesVisible = signal(false);
+  isDataFetched = signal(false);
+  isFilteredDataFetched = signal(false);
 
-  onFilterActivities(activities: any) {
-    this.boredService.changeActivityToNull();
-    this.activityOn.set(false);
+  currentIndex = signal(0);
 
-    this.activitiesOn.set(true);
-    this.filterActivities = activities;
+
+  onFilterActivities(activities: Data[]) {
+    this.filterActivities.set(activities);
+    this.isFilteredDataFetched.set(true);
+  }
+
+  onFilterData(isFetched: boolean) {
+    this.isDataFetched.set(false);
+    this.isFilteredDataFetched.set(isFetched)
   }
 
   ngOnInit(): void {
@@ -76,57 +59,70 @@ export class HomeComponent implements OnInit {
   }
 
   getRandom() {
+    this.resetActivities();
+
+
     this.boredService.getRandom().subscribe({
       next: () => {
-        if (this.activity()) {
-          console.log(this.activity());
-          this.boredService.changeActivitiesToNull();
-          this.activitiesOn.set(false);
-
-          this.random = this.activity();
-          this.activityOn.set(true);
+        const activity = this.boredService.activity();
+        if (activity) {
+          this.random.set(activity);
+        } else {
+          this.random.set(null);
         }
-
+        this.isDataFetched.set(true);
       },
       error: error => {
-        console.log(error);
-
+        console.error(error);
+        this.random.set(null)
+        this.isDataFetched.set(true)
       }
     })
   }
 
   previousCard() {
-    this.isMovingBack.update(value => !value);
-    this.isFade.update(value => !value);
-    if (this.count() === 0) {
-      this.count.set(0)
+    this.toggleFade();
+    if (this.currentIndex() === 0) {
+      this.currentIndex.set(0)
     } else {
 
       setTimeout(() => {
-        this.count.update(slide => slide - 1)
-        this.isMovingBack.set(true);
+        this.currentIndex.update(slide => slide - 1)
         this.isFade.set(true);
       }, 1000)
     }
-    console.log(this.count());
   }
 
   nextCard() {
-    this.isMovingFront.update(value => !value);
-    this.isFade.update(value => !value);
-
-    if (this.count() === this.filterActivities.length) {
-      this.count.set(0)
+    this.toggleFade();
+    if (this.currentIndex() === this.filterActivities()?.length) {
+      this.currentIndex.set(0)
     } else {
-
       setTimeout(() => {
-        this.count.update(slide => slide + 1)
-        this.isMovingFront.set(true);
+        this.currentIndex.update(slide => slide + 1)
         this.isFade.set(true);
       }, 1000);
-      console.log(this.count());
-
     }
+  }
+
+  private toggleFade() {
+    this.isFade.update(value => !value);
+  }
+
+  // private resetRandomActivity() {
+  //   this.boredService.resetAllActivities();
+
+
+  //   this.isDataFetched.set(false)
+  // }
+
+  private resetActivities() {
+
+    this.boredService.resetAllActivities()
+    this.random.set(null);
+    this.filterActivities.set(null);
+    this.isDataFetched.set(false);
+    this.isFilteredDataFetched.set(false);
   }
 
 }

@@ -76,5 +76,10 @@ export class BoredApiService {
   changeActivitiesToNull() {
     return this._activities.set(null);
   }
+
+  resetAllActivities() {
+    this._activity.set(null);
+    this._activities.set(null);
+  }
 }
 
