@@ -4,15 +4,19 @@ import { Data } from '../../core/interfaces/data';
 import { HeaderComponent } from '../../core/components/header/header.component';
 import { MenuComponent } from '../../core/components/menu/menu.component';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, MenuComponent, CommonModule],
+  imports: [HeaderComponent, MenuComponent, CommonModule, FontAwesomeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  faArrowRight = faArrowRight;
+  faArrowLeft = faArrowLeft;
 
   filterActivities: Data[] = [];
   private boredService = inject(BoredApiService);
@@ -20,6 +24,8 @@ export class HomeComponent implements OnInit {
   activity = computed(() => this.boredService.activity());
   activityOn = signal(false);
   activitiesOn = signal(false);
+
+  count = signal(0);
 
   random: Data | null = null;
 
@@ -50,6 +56,24 @@ export class HomeComponent implements OnInit {
 
       }
     })
+  }
+
+  previousCard() {
+    if (this.count() === 0) {
+      this.count.set(0)
+    } else {
+      this.count.update(slide => slide - 1)
+    }
+  }
+
+  nextCard() {
+    if (this.count() === this.filterActivities.length) {
+      this.count.set(0)
+    } else {
+      this.count.update(slide => slide + 1)
+      console.log(this.count());
+
+    }
   }
 
 }
