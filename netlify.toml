@@ -1,2 +1,12 @@
 [build]
-  functions = "netlify/functions"
+  functions = "netlify/functions" # Ruta donde están las funciones serverless
+
+[[redirects]]
+  from = "/api/random"
+  to = "/.netlify/functions/random"
+  status = 200
+
+[[redirects]]
+  from = "/api/filter"
+  to = "/.netlify/functions/filter"
+  status = 200

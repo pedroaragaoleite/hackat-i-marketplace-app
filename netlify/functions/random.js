@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 export async function handler(event, context) {
     try {
-        const response = await fetch('https://bored-api.appbrewery.com/');
+        const response = await fetch('https://bored-api.appbrewery.com/random');
         const data = await response.json();
         return {
             statusCode: 200,
@@ -11,7 +11,7 @@ export async function handler(event, context) {
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Error fetching data' }),
+            body: JSON.stringify({ error: 'Error fetching random activity' }),
         };
     }
 }
