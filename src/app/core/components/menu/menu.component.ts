@@ -13,25 +13,27 @@ import { Data } from '../../interfaces/data';
 export class MenuComponent {
 
   private boredService = inject(BoredApiService);
-  activities = computed(() => this.boredService.filterActivity());
-  activityOn = signal<boolean>(false);
 
-  @Output() filterActivity = new EventEmitter<Data[]>();
+
+  @Output() filterActivity = new EventEmitter<Data[] | null>();
   @Output() dataFetched = new EventEmitter<boolean>();
 
   getActivity(type: string) {
     this.boredService.getActivity(type).subscribe({
       next: () => {
-        const activityData = this.activities();
+        const activityData = this.boredService.filterActivity();
         console.log(activityData);
         if (activityData) {
           this.filterActivity.emit(activityData);
+          this.dataFetched.emit(true);
+        } else {
           this.dataFetched.emit(true);
         }
       },
       error: error => {
         console.error(error, "Error fecthing requested activity")
         this.dataFetched.emit(true);
+        this.filterActivity.emit(null);
       }
     })
 

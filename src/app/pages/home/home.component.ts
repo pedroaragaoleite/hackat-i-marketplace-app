@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   currentIndex = signal(0);
 
 
-  onFilterActivities(activities: Data[]) {
+  onFilterActivities(activities: Data[] | null) {
     this.filterActivities.set(activities);
     this.isFilteredDataFetched.set(true);
   }
@@ -55,13 +55,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getRandom();
   }
 
   getRandom() {
     this.resetActivities();
-
-
     this.boredService.getRandom().subscribe({
       next: () => {
         const activity = this.boredService.activity();
@@ -108,13 +106,6 @@ export class HomeComponent implements OnInit {
   private toggleFade() {
     this.isFade.update(value => !value);
   }
-
-  // private resetRandomActivity() {
-  //   this.boredService.resetAllActivities();
-
-
-  //   this.isDataFetched.set(false)
-  // }
 
   private resetActivities() {
 
