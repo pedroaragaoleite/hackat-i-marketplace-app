@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 export async function handler(event, context) {
     try {
-        const response = await fetch('https://bored-api.appbrewery.com/api/random');
+        const response = await fetch('https://bored-api.appbrewery.com/');
         const data = await response.json();
         return {
             statusCode: 200,
