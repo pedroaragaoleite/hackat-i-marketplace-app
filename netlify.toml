@@ -1,4 +1,4 @@
-[[redirects]]
+[[proxy]]
   from = "/api/*"
   to = "https://bored-api.appbrewery.com:splat"
   status = 200

@@ -7,7 +7,8 @@ import { catchError, tap, throwError } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-  })
+  }),
+  withCredentials: true,
 };
 
 
