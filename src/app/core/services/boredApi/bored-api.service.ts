@@ -6,6 +6,7 @@ import { catchError, tap, throwError } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
   }),
   withCredentials: true,
