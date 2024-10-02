@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, Signal, signal } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Data } from '../../interfaces/data';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -38,7 +38,7 @@ export class BoredApiService {
   getRandom() {
     return this.http.get<Data>(`api/random`, httpOptions)
       .pipe(
-        map((response: Data) => {
+        tap((response: Data) => {
           if (response) {
             this._activity.set(response)
           }
@@ -54,9 +54,7 @@ export class BoredApiService {
   getActivity(type: string) {
     return this.http.get<Data>(`api/filter?type=${type}`, httpOptions)
       .pipe(
-        map((response: any) => {
-          console.log(response);
-
+        tap((response: any) => {
           if (response) {
             this._activities.set(response)
           }
@@ -67,14 +65,6 @@ export class BoredApiService {
           return throwError(error)
         })
       )
-  }
-
-  changeActivityToNull() {
-    return this._activity.set(null);
-  }
-
-  changeActivitiesToNull() {
-    return this._activities.set(null);
   }
 
   resetAllActivities() {

@@ -81,9 +81,20 @@
             </ul>
         </section>
         } @else {
-        @if(isDataFetched() && random() === null) { <div>
-            <h1 class="text-gray-800 text-3xl font-semibold text-center">Something went wrong 1</h1>
-        </div>
+        @if(isDataFetched() && random() === null) {
+        <section class="mx-auto md:px-8 p-5 ">
+            <div class="bg-white rounded-md shadow-sm p-5">
+                <div>
+                    <p class="text-gray-800 text-md font-semibold text-center">No és possible accedir a les activitats,
+                        intenteu més tard si us plau...
+                    </p>
+                </div>
+                <div class="flex justify-center mt-5">
+                    <fa-icon class="fa-2xl text-red-600" [icon]="faBan"></fa-icon>
+                </div>
+            </div>
+
+        </section>
         }
         }
         <!-- Activity Random finish-->
@@ -172,9 +183,19 @@
         </section>
         }@else {
         @if(isFilteredDataFetched() && filterActivities() === null) {
-        <div>
-            <h1 class="text-gray-800 text-3xl font-semibold text-center">Something went wrong 2</h1>
-        </div>
+        <section class="mx-auto md:px-8 p-5 ">
+            <div class="bg-white rounded-md shadow-sm p-5">
+                <div>
+                    <p class="text-gray-800 text-md font-semibold text-center">No és possible accedir a les activitats,
+                        intenteu més tard si us plau...
+                    </p>
+                </div>
+                <div class="flex justify-center mt-5">
+                    <fa-icon class="fa-2xl text-red-600" [icon]="faBan"></fa-icon>
+                </div>
+            </div>
+
+        </section>
         }
         }
         <!-- end activities by type -->

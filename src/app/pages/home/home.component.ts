@@ -5,7 +5,7 @@ import { HeaderComponent } from '../../core/components/header/header.component';
 import { MenuComponent } from '../../core/components/menu/menu.component';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faArrowLeft, faBan } from '@fortawesome/free-solid-svg-icons';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -31,11 +31,14 @@ export class HomeComponent implements OnInit {
   // FontAnswome Icons
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
+  faBan = faBan;
   isFade = signal(true);
 
   // filterActivities: Data[] = [];
   filterActivities = signal<Data[] | null>(null);
-  random = signal<Data | null>(null);
+  // random = signal<Data | null>(null);
+
+  random = this.boredService.activity;
 
   // isActivitiesVisible = signal(false);
   isDataFetched = signal(false);
@@ -62,17 +65,10 @@ export class HomeComponent implements OnInit {
     this.resetActivities();
     this.boredService.getRandom().subscribe({
       next: () => {
-        const activity = this.boredService.activity();
-        if (activity) {
-          this.random.set(activity);
-        } else {
-          this.random.set(null);
-        }
         this.isDataFetched.set(true);
       },
       error: error => {
         console.error(error);
-        this.random.set(null)
         this.isDataFetched.set(true)
       }
     })
@@ -110,7 +106,6 @@ export class HomeComponent implements OnInit {
   private resetActivities() {
 
     this.boredService.resetAllActivities()
-    this.random.set(null);
     this.filterActivities.set(null);
     this.isDataFetched.set(false);
     this.isFilteredDataFetched.set(false);
