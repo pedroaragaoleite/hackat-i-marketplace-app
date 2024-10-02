@@ -1,5 +1,2 @@
-[[redirects]]
-  from = "/api/*"
-  to = "https://bored-api.appbrewery.com:splat"
-  status = 200
-  force = true
+[build]
+  functions = "netlify/functions"
