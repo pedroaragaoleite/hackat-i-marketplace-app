@@ -36,7 +36,7 @@ export class BoredApiService {
 
 
   getRandom() {
-    return this.http.get<Data>(`${environment.apiUrl}/random`, httpOptions)
+    return this.http.get<Data>(`api/random`, httpOptions)
       .pipe(
         tap((response: Data) => {
           if (response) {
@@ -52,7 +52,7 @@ export class BoredApiService {
   }
 
   getActivity(type: string) {
-    return this.http.get<Data>(`${environment.apiUrl}/filter?type=${type}`, httpOptions)
+    return this.http.get<Data>(`api/filter?type=${type}`, httpOptions)
       .pipe(
         tap((response: any) => {
           if (response) {
