@@ -1,6 +1,9 @@
 [build]
   functions = "netlify/functions" # Ruta donde están las funciones serverless
 
+  [functions]
+  node_bundler = "esbuild"
+
 [[redirects]]
   from = "/api/random"
   to = "/.netlify/functions/random"

@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+export async function handler(event, context) {
     const type = event.queryStringParameters.type; // Obtener el tipo de la query string
     const url = `https://bored-api.appbrewery.com/filter?type=${type}`; // URL correcta
 
@@ -17,4 +17,4 @@ exports.handler = async function (event, context) {
             body: JSON.stringify({ error: 'Error fetching activities by type' }),
         };
     }
-};
+}
