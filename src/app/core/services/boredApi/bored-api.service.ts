@@ -60,7 +60,7 @@ export class BoredApiService {
           }
         }),
         catchError(error => {
-          console.error("Error fetching random activity", error);
+          console.error("Error fetching activities", error);
           this._activities.set(null);
           return throwError(error)
         })
