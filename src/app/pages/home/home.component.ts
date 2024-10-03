@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { BoredApiService } from '../../core/services/boredApi/bored-api.service';
 import { Data } from '../../core/interfaces/data';
 import { HeaderComponent } from '../../core/components/header/header.component';
@@ -25,6 +25,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('activity') activity!: ElementRef;
+  @ViewChild('activities') activities!: ElementRef;
 
   private boredService = inject(BoredApiService);
 
@@ -54,7 +57,9 @@ export class HomeComponent implements OnInit {
 
   onFilterData(isFetched: boolean) {
     this.isDataFetched.set(false);
-    this.isFilteredDataFetched.set(isFetched)
+    this.isFilteredDataFetched.set(isFetched);
+    this.scrollToActivities();
+
   }
 
   ngOnInit(): void {
@@ -118,6 +123,14 @@ export class HomeComponent implements OnInit {
     this.filterActivities.set(null);
     this.isDataFetched.set(false);
     this.isFilteredDataFetched.set(false);
+  }
+
+  scrollTo() {
+    this.activity.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  scrollToActivities() {
+    this.activities.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
 }
