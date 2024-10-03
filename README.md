@@ -1,27 +1,21 @@
 # BooredApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+BooredApp is a fun and interactive web application that helps you find random activities to do when you're feeling bored. Whether you're looking for something educational, social, or creative, BooredApp has a variety of activity suggestions that can help pass the time.
 
-## Development server
+## Features
+Random Activity Generator: Get random activity suggestions to keep you engaged.
+Filter Activities by Type: Filter activities by specific categories such as education, social, and more.
+Responsive Design: Optimized for both desktop and mobile devices.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+##Demo
+[Live Demo](https://booredapp.netlify.app/home)
 
-## Code scaffolding
+## Getting Started
+These instructions will help you set up and run the project locally for development and testing purposes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
+Ensure you have the following installed:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Node.js (version 14+)
+* Angular CLI (version 12+)
+* Git
