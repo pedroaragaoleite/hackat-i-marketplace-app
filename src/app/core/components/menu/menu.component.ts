@@ -23,7 +23,6 @@ export class MenuComponent {
     this.boredService.getActivity(type).subscribe({
       next: () => {
         const activityData = this.boredService.filterActivity();
-        console.log(activityData);
         if (activityData) {
           this.filterActivity.emit(activityData);
           this.dataFetched.emit(true);

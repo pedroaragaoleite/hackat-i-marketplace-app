@@ -98,17 +98,11 @@ export class HomeComponent implements OnInit {
     const currentLength = this.filterActivities()?.length ?? 0;
 
     if (this.currentIndex() === currentLength - 1) {
-      this.currentIndex.set(0)
-      console.log(this.currentIndex());
-
+      this.currentIndex.set(0);
     } else {
       setTimeout(() => {
         this.currentIndex.update(slide => slide + 1)
         this.isFade.set(true);
-        console.log(this.currentIndex());
-        console.log(this.filterActivities()?.length);
-
-
       }, 1000);
     }
   }
