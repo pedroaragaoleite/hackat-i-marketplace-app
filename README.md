@@ -38,7 +38,7 @@ npm install
 
 4- Run the application:
 ```
-ng serve
+npm run proxy
 ```
 
 ## Technologies
