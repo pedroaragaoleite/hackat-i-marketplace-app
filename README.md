@@ -45,6 +45,7 @@ npm run proxy
 BooredApp is built using the following technologies:
 
 * Angular 18: Frontend framework for building the user interface.
+* TailwindCSS: Frontend CSS framework.
 * RxJS: For handling asynchronous events and API calls.
 * Netlify: For deploying and hosting the app.
 * TypeScript: Strongly-typed JavaScript for scalable code.
