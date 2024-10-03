@@ -3,6 +3,7 @@ import { BoredApiService } from '../../services/boredApi/bored-api.service';
 
 import { Data } from '../../interfaces/data';
 
+
 @Component({
   selector: 'app-menu',
   standalone: true,

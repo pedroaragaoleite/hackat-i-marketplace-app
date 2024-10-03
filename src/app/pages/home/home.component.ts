@@ -89,12 +89,21 @@ export class HomeComponent implements OnInit {
 
   nextCard() {
     this.toggleFade();
-    if (this.currentIndex() === this.filterActivities()?.length) {
+
+    const currentLength = this.filterActivities()?.length ?? 0;
+
+    if (this.currentIndex() === currentLength - 1) {
       this.currentIndex.set(0)
+      console.log(this.currentIndex());
+
     } else {
       setTimeout(() => {
         this.currentIndex.update(slide => slide + 1)
         this.isFade.set(true);
+        console.log(this.currentIndex());
+        console.log(this.filterActivities()?.length);
+
+
       }, 1000);
     }
   }
