@@ -1,27 +1,63 @@
 # BooredApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+BooredApp is a fun and interactive web application that helps you find random activities to do when you're feeling bored. Whether you're looking for something educational, social, or creative, BooredApp has a variety of activity suggestions that can help pass the time.
 
-## Development server
+## Features
+Random Activity Generator: Get random activity suggestions to keep you engaged.
+Filter Activities by Type: Filter activities by specific categories such as education, social, and more.
+Responsive Design: Optimized for both desktop and mobile devices.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Demo
+[Live Demo](https://booredapp.netlify.app/home)
 
-## Code scaffolding
+## Getting Started
+These instructions will help you set up and run the project locally for development and testing purposes.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
+Ensure you have the following installed:
 
-## Build
+* Node.js (version 14+)
+* Angular CLI (version 12+)
+* Git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+1 - Clone the repository and navigate to the backend directory.
+```
+https://github.com/pedroaragaoleite/hackat-i-marketplace-app.git
+```
+2 - Navigate to the project directory:
+```
+cd booredapp
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3 - Install dependecies
+```
+npm install
+```
 
-## Running end-to-end tests
+4- Run the application:
+```
+npm run proxy
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Technologies
+BooredApp is built using the following technologies:
 
-## Further help
+* Angular 18: Frontend framework for building the user interface.
+* TailwindCSS: Frontend CSS framework.
+* RxJS: For handling asynchronous events and API calls.
+* Netlify: For deploying and hosting the app.
+* TypeScript: Strongly-typed JavaScript for scalable code.
+* Bored API: External API to fetch random activities.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Tests
+The app includes unit tests to ensure the core functionality of components and services works as expected. We use Jasmine and Karma as the testing framework.
+
+To run the tests:
+```
+ng test
+```
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
